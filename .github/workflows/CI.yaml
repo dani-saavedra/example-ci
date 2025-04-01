@@ -10,6 +10,9 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
+      contents: read
+      packages: write
+      checks: write
     steps:
       - name: Descargando el codigo fuente
         uses: actions/checkout@v4
