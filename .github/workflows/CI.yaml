@@ -18,4 +18,4 @@ jobs:
       - name: Instalando Gradle
         uses: gradle/gradle-build-action@v2
       - name: Compilando artefacto
-        uses: ./gradlew build
+        run: ./gradlew build
