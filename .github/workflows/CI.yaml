@@ -1,0 +1,21 @@
+name: Continuos Integration
+on:
+  ## Cuando ya llego el cambio push:
+  # Cuando esta intentando llevar el cambio a través de un PR
+  pull_request:
+    branches: [ "main","release","master","develop" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargando el codigo fuente
+        uses: actions/checkout@v4
+      - name: Instalando Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Instalando Gradle
+        uses: gradle/actions/setup-gradle@v3
+      - name: Compilando artefacto
+        uses: ./gradlew build
