@@ -19,3 +19,11 @@ jobs:
         uses: gradle/gradle-build-action@v2
       - name: Compilando artefacto
         run: ./gradlew build
+      - name: Verificando cobertura
+        uses: madrapps/jacoco-report@v1.7.1
+        with:
+          paths: |
+            ${{ github.workspace }}/**/build/reports/jacoco/prodNormalDebugCoverage/prodNormalDebugCoverage.xml,
+            ${{ github.workspace }}/**/build/reports/jacoco/**/debugCoverage.xml
+          min-coverage-overall: 40
+          min-coverage-changed-files: 60
